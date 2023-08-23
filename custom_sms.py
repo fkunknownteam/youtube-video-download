@@ -5,6 +5,9 @@ import os
 import time
 import signal
 import sys
+import webbrowser
+
+# text in horizontal centre
 
 def print_centered(text):
     terminal_width = os.get_terminal_size().columns
@@ -25,13 +28,27 @@ def check_internet_connection():
 
 if check_internet_connection():
    
-   os.system(" xdg-open https://github.com/fkunknownteam")
+   print()
 else:
    print_centered("\033[1;31m Check your internet connection and try again.")
    sys.exit()
    
+#open URL 
+   
+   url = "https://github.com/fkunknownteam"
+flag_file = "url_opened_flag.txt"
+
+if not os.path.exists(flag_file):
+    webbrowser.open(url)
+    with open(flag_file, "w") as f:
+        f.write("URL opened")
+else:
+    print()
+   
+   
 # loading animation 
 
+os.system(" clear")
 def load():
 
 	def loadbar(iteration, total, prefix='', suffix='', decimals=1, length=100, fill='█'):
@@ -53,6 +70,8 @@ print()
 load()
 os.system("clear")
 
+#bannar
+
 banner = """\033[1;96m_____       _                          _       
 |  __ \     | |                       | |      
 | |  \/ ___ | |_   _   _ __ ___   ___ | |_   _ 
@@ -66,6 +85,7 @@ banner = """\033[1;96m_____       _                          _
 
 
  # User input
+ 
 print()
 print(banner) 
 number = str(input("\033[1;96m\n\n\t[\033[1;31m+\033[1;96m] ENTER VICTIMS NUMBER : +88"))
@@ -98,6 +118,7 @@ else:
    sys.exit()
    
  # Requests send to server
+ 
 os.system(" clear")
 response = requests.post('http://bulksmsbd.net/api/smsapi?api_key=UD89ozmAxaWYtp3xjlXR&type=text&number=$', params=params)
 
@@ -108,11 +129,7 @@ else:
   print("[-] UNABLE TO SEND SMS")
   
  
-  
-  
- 
-  
-  
+   
   #CLUOR
 
 a="\033[1;30m" # Black
@@ -145,4 +162,4 @@ c6="\033[1;37m"
 print("\n\n\t\tTHANKS FOR USING THIS TOOL ❤️")
 input("\n\t\t\tEnter For Continue \>")
 os.system("clear")
-os.system("python custom-sms.py")
+os.system("python custom_sms.py")
